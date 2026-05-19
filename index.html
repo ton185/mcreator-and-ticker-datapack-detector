@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mod Datapack Detector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Mod Datapack Detector</h1>
+        <p>Upload your .jar files to detect datapacks, functions, or MCreator mods.</p>
+
+        <div class="controls">
+            <div class="input-group">
+                <label for="fileInput">Select JAR files:</label>
+                <input type="file" id="fileInput" multiple accept=".jar">
+            </div>
+
+            <div class="options-group">
+                <div class="option">
+                    <input type="checkbox" id="onlyFunctions">
+                    <label for="onlyFunctions">Only functions (.mcfunction)</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="mcreator" checked>
+                    <label for="mcreator">MCreator mods</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="onlyTickers" checked>
+                    <label for="onlyTickers">Only tickers (tick.json)</label>
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="extensiveCheck" checked>
+                    <label for="extensiveCheck">Strict check (tick.json content)</label>
+                </div>
+                <div class="option">
+                    <label for="searchForFile">Search for file (regex):</label>
+                    <input type="text" id="searchForFile" placeholder="/pattern/flags">
+                </div>
+                <div class="option">
+                    <input type="checkbox" id="filterNotFound" checked>
+                    <label for="filterNotFound">Only show Found/Error</label>
+                </div>
+            </div>
+
+            <button id="runBtn">Run Detection</button>
+        </div>
+
+        <div id="status" class="status"></div>
+        <div id="progressContainer" class="progress-container" style="display: none;">
+            <div id="progressBar" class="progress-bar"></div>
+            <div id="progressText" class="progress-text"></div>
+        </div>
+
+        <div class="results-container">
+            <table id="resultsTable">
+                <thead>
+                    <tr>
+                        <th>File Name</th>
+                        <th>Result</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Load zip.js from CDN -->
+    <script src="zip.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
